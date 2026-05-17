@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main # تأكد أن الفرع الرئيسي في جيت هاب هو main
+
+media_folder: "assets/images" # المجلد الذي ستحفظ فيه صور المقالات
+public_folder: "/assets/images"
+
+collections:
+  - name: "blog"
+    label: "المدونة"
+    folder: "blog" # المجلد الذي ستحفظ فيه ملفات المقالات
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "العنوان", name: "title", widget: "string"}
+      - {label: "تاريخ النشر", name: "date", widget: "datetime"}
+      - {label: "صورة المقال", name: "image", widget: "image"}
+      - {label: "نص المقال", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "إعدادات الصفحة الرئيسية"
+    files:
+      - label: "نصوص الهيرو والخبرة"
+        name: "hero_settings"
+        file: "data/hero.json"
+        fields:
+          - {label: "عنوان الهيرو الرئيسي", name: "hero_title", widget: "string"}
+          - {label: "جملة الخبرة", name: "exp_text", widget: "text"}
